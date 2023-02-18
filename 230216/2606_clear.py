@@ -26,4 +26,5 @@ while True:
                     nextlist.append(j)
     now = nextlist.copy()
     nextlist.clear()
+
 print(len(reslist)-1)
