@@ -7,21 +7,31 @@ leng = int(input())
 # 문자열 입력
 stri = input()
 
-# Pi 문자열 생성
-p = "I"
-for _ in range(N):
-    p += "OI"
 
 # 문자열 횟수 검사
+res = 0
 n = 0
-ind = 0
-while True:
-    ind = stri.find(p, ind)
-    if ind == -1 or leng-ind < 2*N-1:
-        break
+bef = 'I'
+for i in stri:
+    if i == 'I':
+        if bef=='IO':
+            n+=1
+            bef = 'I'
+        else:
+            if n:
+                if n>=N:
+                    res += n-N+1
+                n=0
+            bef = 'I'
     else:
-        ind += 1
-        n += 1
+        if bef=='I':
+            bef='IO'
+        else:
+            if n:
+                if n>=N:
+                    res+=n-N+1
+                n=0
+            bef = 'O'
 
 # 값 출력
-print(n)
+print(res)
